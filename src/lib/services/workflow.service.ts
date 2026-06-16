@@ -1,18 +1,25 @@
 import { WorkflowRepository } from "@/lib/repositories/workflow.repository";
-
+import {
+  createDefaultWorkflow
+} from "@/lib/workflow/workflow-factory";
 export class WorkflowService {
   private repo =
     new WorkflowRepository();
 
   async createWorkflow(
-    clerkUserId: string,
-    name: string
-  ) {
-    return this.repo.create({
-      clerkUserId,
-      name
-    });
-  }
+  clerkUserId: string,
+  name: string
+) {
+  const workflow =
+    createDefaultWorkflow();
+
+  return this.repo.create({
+    clerkUserId,
+    name,
+    nodes: workflow.nodes,
+    edges: workflow.edges,
+  });
+}
 
   async getWorkflows(
     clerkUserId: string

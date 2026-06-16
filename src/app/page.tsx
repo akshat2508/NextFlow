@@ -16,6 +16,7 @@ interface Workflow {
 }
 
 export default function DashboardPage() {
+  console.log("Linked in : https://www.linkedin.com/in/akshat-paul/")
   const {
     isLoaded,
     isSignedIn,
