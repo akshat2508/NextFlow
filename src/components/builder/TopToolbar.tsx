@@ -7,7 +7,7 @@ import {
 import {
   useWorkflowStore
 } from "@/store/workflow.store";
-
+import { UserButton } from "@clerk/nextjs";
 export function TopToolbar() {
   const [saving, setSaving] =
     useState(false);
@@ -17,6 +17,7 @@ export function TopToolbar() {
     nodes,
     edges
   } = useWorkflowStore();
+  console.log("workflowId:", workflowId);
 
   async function handleSave() {
     if (!workflowId) {
@@ -62,8 +63,12 @@ export function TopToolbar() {
       px-4
       "
     >
-      <div className="font-semibold">
+      <div className="font-semibold flex items-center gap-2">
         NextFlow
+        <div className="">
+
+      <UserButton/>
+        </div>
       </div>
 
       <div className="flex gap-2">
