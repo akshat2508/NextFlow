@@ -2,14 +2,19 @@
 
 import { useWorkflowStore }
 from "@/store/workflow.store";
+import { ChangeEvent } from "react";
 
 export function LeftSidebar() {
   const {
-    workflowId,
-    workflowName,
-    nodes,
-    edges,
-  } = useWorkflowStore();
+  workflowId,
+  workflowName,
+  nodes,
+  edges,
+  setNodes,
+  setEdges,
+  setWorkflowName,
+} = useWorkflowStore();
+  
 
   function handleExport() {
     const workflow = {
@@ -18,6 +23,7 @@ export function LeftSidebar() {
       nodes,
       edges,
     };
+    
 
     const blob =
       new Blob(
@@ -55,6 +61,68 @@ export function LeftSidebar() {
     );
   }
 
+  function handleImport(
+  event: ChangeEvent<HTMLInputElement>
+) {
+  const file =
+    event.target.files?.[0];
+
+  if (!file) {
+    return;
+  }
+
+  const reader =
+    new FileReader();
+
+  reader.onload = (
+    e
+  ) => {
+    try {
+      const content =
+        e.target?.result as string;
+
+      const workflow =
+        JSON.parse(content);
+
+      if (
+        !workflow.nodes ||
+        !workflow.edges
+      ) {
+        throw new Error(
+          "Invalid workflow"
+        );
+      }
+
+      setNodes(
+        workflow.nodes
+      );
+
+      setEdges(
+        workflow.edges
+      );
+
+      if (
+        workflow.workflowName
+      ) {
+        setWorkflowName(
+          workflow.workflowName
+        );
+      }
+
+      alert(
+        "Workflow imported"
+      );
+    } catch (error) {
+      console.error(error);
+
+      alert(
+        "Invalid JSON file"
+      );
+    }
+  };
+
+  reader.readAsText(file);
+}
   return (
     <aside
       className="
@@ -108,16 +176,29 @@ export function LeftSidebar() {
           Export JSON
         </button>
 
-        <button
-          className="
-          w-full
-          rounded
-          border
-          p-2
-          "
-        >
-          Import JSON
-        </button>
+        <label
+  className="
+  flex
+  w-full
+  cursor-pointer
+  items-center
+  justify-center
+  rounded
+  border
+  p-2
+  "
+>
+  Import JSON
+
+  <input
+    type="file"
+    accept=".json"
+    onChange={
+      handleImport
+    }
+    className="hidden"
+  />
+</label>
       </div>
     </aside>
   );
