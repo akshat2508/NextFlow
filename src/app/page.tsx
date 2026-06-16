@@ -1,32 +1,34 @@
 "use client";
 
 import { useAuth, SignInButton } from "@clerk/nextjs";
-import { FlowProvider } from "@/components/reactflow/FlowProvider";
-import { BuilderLayout } from "@/components/builder/BuilderLayout";
 
-export default function HomePage() {
-  const { isSignedIn, isLoaded } = useAuth();
+export default function DashboardPage() {
+  const {
+    isLoaded,
+    isSignedIn,
+  } = useAuth();
 
-  console.log(
-    "[NextFlow] Candidate LinkedIn: https://linkedin.com"
-  );
-
-  // Prevent UI flickering while Clerk loads the auth state
   if (!isLoaded) {
-    return <div className="flex h-screen items-center justify-center">Loading...</div>;
+    return (
+      <div className="flex h-screen items-center justify-center">
+        Loading...
+      </div>
+    );
+  }
+
+  if (!isSignedIn) {
+    return (
+      <div className="flex h-screen items-center justify-center">
+        <SignInButton />
+      </div>
+    );
   }
 
   return (
-    <main className="h-screen w-screen">
-      {!isSignedIn ? (
-        <div className="flex h-screen items-center justify-center">
-          <SignInButton />
-        </div>
-      ) : (
-        <FlowProvider>
-          <BuilderLayout />
-        </FlowProvider>
-      )}
+    <main className="h-screen bg-zinc-950 text-white p-8">
+      <h1 className="text-3xl font-bold">
+        NextFlow Dashboard
+      </h1>
     </main>
   );
 }

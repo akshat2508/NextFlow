@@ -10,7 +10,7 @@ import { WorkflowAutosave } from "./WorkFlowAutosave";
 export function BuilderLayout() {
   return (
     <div className="h-screen flex flex-col">
-        <BuilderInitializer/>
+        {/* <BuilderInitializer/> */}
         <WorkflowAutosave/>
       <TopToolbar />
 

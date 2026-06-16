@@ -34,6 +34,15 @@ interface WorkflowStore {
     edges: Edge[]
   ) => void;
 
+  loadWorkflow: (
+    workflow: {
+      id: string;
+      name: string;
+      nodes: Node[];
+      edges: Edge[];
+    }
+  ) => void;
+
   reset: () => void;
 }
 
@@ -77,6 +86,23 @@ export const useWorkflowStore =
       setEdges: (edges) =>
         set({
           edges
+        }),
+
+      loadWorkflow: (
+        workflow
+      ) =>
+        set({
+          workflowId:
+            workflow.id,
+
+          workflowName:
+            workflow.name,
+
+          nodes:
+            workflow.nodes,
+
+          edges:
+            workflow.edges,
         }),
 
       reset: () =>
