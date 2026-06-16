@@ -86,7 +86,59 @@ export function WorkflowCanvas() {
 const onConnect = (
   connection: Connection
 ) => {
-  console.log("CONNECTING:", connection);
+  if (
+    !isValidConnectionType(
+      connection
+    )
+  ) {
+    console.warn(
+      "Invalid connection type"
+    );
+
+    return;
+  }
+
+  if (
+    createsCycle(
+      connection,
+      nodes,
+      edges
+    )
+  ) {
+    console.warn(
+      "Cycle detected"
+    );
+
+    return;
+  }
+
+  const sourceNode =
+    nodes.find(
+      (n) =>
+        n.id ===
+        connection.source
+    );
+
+  const targetNode =
+    nodes.find(
+      (n) =>
+        n.id ===
+        connection.target
+    );
+
+  if (
+    targetNode?.type ===
+    "REQUEST_INPUTS"
+  ) {
+    return;
+  }
+
+  if (
+    sourceNode?.type ===
+    "RESPONSE"
+  ) {
+    return;
+  }
 
   setEdges(
     addEdge(
