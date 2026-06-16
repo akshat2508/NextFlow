@@ -6,10 +6,12 @@ import { HistoryPanel } from "./HistoryPanel";
 import { TopToolbar } from "./TopToolbar";
 import { BuilderInitializer }
 from "./BuilderInitializer";
+import { WorkflowAutosave } from "./WorkFlowAutosave";
 export function BuilderLayout() {
   return (
     <div className="h-screen flex flex-col">
         <BuilderInitializer/>
+        <WorkflowAutosave/>
       <TopToolbar />
 
       <div className="flex flex-1 overflow-hidden">
