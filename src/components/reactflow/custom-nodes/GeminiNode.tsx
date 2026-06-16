@@ -5,12 +5,22 @@ import {
   Position,
   NodeProps
 } from "@xyflow/react";
+import { useWorkflowStore }
+from "@/store/workflow.store";
 
 import { BaseNode } from "./BaseNode";
 
 export function GeminiNode(
   props: NodeProps
+
 ) {
+
+    const updateNodeData =
+  useWorkflowStore(
+    (state) =>
+      state.updateNodeData
+  );
+
   return (
     <BaseNode
       title="Gemini 3.1 Pro"
@@ -19,6 +29,19 @@ export function GeminiNode(
       }
     >
       <textarea
+  value={
+    (props.data?.prompt as string) ??
+    ""
+  }
+  onChange={(e) =>
+    updateNodeData(
+      props.id,
+      {
+        prompt:
+          e.target.value
+      }
+    )
+  }
   placeholder="Prompt"
   className="
     h-28

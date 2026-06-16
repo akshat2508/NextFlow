@@ -45,6 +45,8 @@ export async function runNode(
 }
 
     case NodeType.GEMINI_PRO: {
+      console.log("GEMINI INPUTS");
+console.log(inputs);
   const response =
     await generateGeminiResponse({
       prompt: inputs.prompt

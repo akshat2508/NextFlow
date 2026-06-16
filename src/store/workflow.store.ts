@@ -42,6 +42,10 @@ interface WorkflowStore {
       edges: Edge[];
     }
   ) => void;
+  updateNodeData: (
+  nodeId: string,
+  data: Record<string, unknown>
+) => void;
 
   reset: () => void;
 }
@@ -104,6 +108,23 @@ export const useWorkflowStore =
           edges:
             workflow.edges,
         }),
+        updateNodeData: (
+  nodeId,
+  data
+) =>
+  set((state) => ({
+    nodes: state.nodes.map((node) =>
+      node.id === nodeId
+        ? {
+            ...node,
+            data: {
+              ...node.data,
+              ...data
+            }
+          }
+        : node
+    )
+  })),
 
       reset: () =>
         set({

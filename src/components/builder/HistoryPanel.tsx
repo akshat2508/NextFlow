@@ -10,6 +10,7 @@ interface NodeRun {
   status: string;
   durationMs: number;
   error?: string | null;
+  output?: any;
 }
 
 interface WorkflowRun {
@@ -173,6 +174,29 @@ export function HistoryPanel() {
                         }
                       </div>
                     )}
+                    {nodeRun.output && (
+  <pre
+    className="
+      mt-2
+      max-h-40
+      overflow-auto
+      rounded
+      bg-black
+      p-2
+      text-[10px]
+      text-green-400
+      whitespace-pre-wrap
+      break-words
+    "
+  >
+    {JSON.stringify(
+      nodeRun.output,
+      null,
+      2
+    )}
+  </pre>
+)}
+                    
                   </div>
                 )
               )}
