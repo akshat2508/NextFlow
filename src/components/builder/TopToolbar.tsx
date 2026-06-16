@@ -50,6 +50,47 @@ export function TopToolbar() {
     }
   }
 
+  const [executing, setExecuting] =
+  useState(false);
+
+
+async function handleExecute() {
+  if (!workflowId) {
+    return;
+  }
+
+  try {
+    setExecuting(true);
+
+    const response =
+      await fetch(
+        "/api/executions",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type":
+              "application/json",
+          },
+          body: JSON.stringify({
+            workflowId,
+          }),
+        }
+      );
+
+    const result =
+      await response.json();
+
+    console.log(
+      "Execution Result",
+      result
+    );
+  } catch (error) {
+    console.error(error);
+  } finally {
+    setExecuting(false);
+  }
+}
+
   return (
     <header
       className="
@@ -90,13 +131,20 @@ export function TopToolbar() {
           Rename
         </button>
 
-        <button className="rounded border px-3 py-1">
-          Delete
-        </button>
-
-        <button className="rounded bg-blue-600 px-3 py-1">
-          Execute
-        </button>
+        <button
+  onClick={handleExecute}
+  disabled={executing}
+  className="
+    rounded
+    bg-blue-600
+    px-3
+    py-1
+  "
+>
+  {executing
+    ? "Running..."
+    : "Execute"}
+</button>
       </div>
     </header>
   );
