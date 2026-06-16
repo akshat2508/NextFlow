@@ -8,6 +8,8 @@ import {
   useWorkflowStore
 } from "@/store/workflow.store";
 import { UserButton } from "@clerk/nextjs";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 export function TopToolbar() {
   const [saving, setSaving] =
     useState(false);
@@ -124,13 +126,32 @@ if (
       px-4
       "
     >
-      <div className="font-semibold flex items-center gap-2">
-        NextFlow
-        <div className="">
+      <div className="flex items-center gap-4">
+  <Link
+    href="/"
+    className="
+      flex
+      items-center
+      gap-1
+      rounded
+      border
+      border-zinc-700
+      px-2
+      py-1
+      text-sm
+      hover:bg-zinc-900
+    "
+  >
+    <ArrowLeft className="h-4 w-4" />
+    Dashboard
+  </Link>
 
-      <UserButton/>
-        </div>
-      </div>
+  <span className="font-semibold">
+    NextFlow
+  </span>
+
+  <UserButton />
+</div>
 
       <div className="flex gap-2">
         <button

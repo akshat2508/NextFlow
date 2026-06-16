@@ -151,16 +151,6 @@ export function LeftSidebar() {
           "
         />
 
-        <button
-          className="
-          w-full
-          rounded
-          bg-blue-600
-          p-2
-          "
-        >
-          Run Workflow
-        </button>
 
         <button
           onClick={

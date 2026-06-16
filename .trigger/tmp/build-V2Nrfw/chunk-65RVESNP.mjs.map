@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../../src/lib/trigger/registry.ts", "../../../src/lib/types/node.types.ts"],
-  "sourcesContent": ["import { NodeType } from \"@/lib/types/node.types\";\n\nimport { cropImageTask } from \"./tasks/crop-image.task\";\nimport { geminiTask } from \"./tasks/gemini.task\";\n\nexport const TASK_REGISTRY = {\n  [NodeType.CROP_IMAGE]: cropImageTask,\n  [NodeType.GEMINI_PRO]: geminiTask\n} as const;", "export enum NodeType {\n  REQUEST_INPUTS = \"REQUEST_INPUTS\",\n  CROP_IMAGE = \"CROP_IMAGE\",\n  GEMINI_PRO = \"GEMINI_PRO\",\n  RESPONSE = \"RESPONSE\"\n}\n\nexport enum PortType {\n  TEXT = \"TEXT\",\n  IMAGE = \"IMAGE\",\n  VIDEO = \"VIDEO\",\n  AUDIO = \"AUDIO\",\n  FILE = \"FILE\",\n  RESPONSE = \"RESPONSE\"\n}\n\nexport enum NodeState {\n  IDLE = \"idle\",\n  RUNNING = \"running\",\n  SUCCESS = \"success\",\n  FAILED = \"failed\"\n}\n\nexport interface NodePort {\n  id: string;\n  name: string;\n  type: PortType;\n  required: boolean;\n}\n\nexport interface NodePosition {\n  x: number;\n  y: number;\n}\n\nexport interface BaseNodeData {\n  [key: string]: unknown;\n}\n\nexport interface WorkflowNode<T = BaseNodeData> {\n  id: string;\n  type: NodeType;\n  position: NodePosition;\n  data: T;\n  state: NodeState;\n}"],
-  "mappings": ";;;;;;;;;;;AAAA;;;ACAA;;;ADKO,IAAM,gBAAgB;AAAA,EAC3B,8BAAoB,GAAG;AAAA,EACvB,8BAAoB,GAAG;AACzB;",
-  "names": []
-}

@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../../src/lib/trigger/tasks/crop-image.task.ts", "../../../src/lib/utils/promises.ts"],
-  "sourcesContent": ["import { task } from \"@trigger.dev/sdk/v3\";\n\nimport {\n  CropImagePayload,\n  CropImageResult\n} from \"@/lib/types/trigger.types\";\n\nimport { sleep } from \"@/lib/utils/promises\";\n\nexport const cropImageTask = task({\n  id: \"crop-image-task\",\n\n  run: async (\n    payload: CropImagePayload\n  ): Promise<CropImageResult> => {\n    await sleep(30_000);\n\n    return {\n      image: payload.image\n    };\n  }\n});", "export async function sleep(\n  ms: number\n): Promise<void> {\n  await new Promise((resolve) =>\n    setTimeout(resolve, ms)\n  );\n}\n\nexport async function settle<T>(\n  promises: Promise<T>[]\n) {\n  return Promise.allSettled(promises);\n}"],
-  "mappings": ";;;;;;;;AAAA;;;ACAA;AAAA,eAAsB,MACpB,IACe;AACf,QAAM,IAAI;AAAA,IAAQ,CAAC,YACjB,WAAW,SAAS,EAAE;AAAA,EACxB;AACF;;;ADGO,IAAM,gBAAgB,KAAK;AAAA,EAChC,IAAI;AAAA,EAEJ,KAAK,OACH,YAC6B;AAC7B,UAAM,MAAM,GAAM;AAElB,WAAO;AAAA,MACL,OAAO,QAAQ;AAAA,IACjB;AAAA,EACF;AACF,CAAC;",
-  "names": []
-}

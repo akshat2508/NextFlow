@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../../../../../../../../../src/lib/trigger/index.ts"],
-  "sourcesContent": ["import \"@/lib/trigger/tasks/crop-image.task\";\nimport \"@/lib/trigger/tasks/gemini.task\";\n// export * from \"./client\";\nexport * from \"./registry\";"],
-  "mappings": ";;;;;;;;;;;AAAA;",
-  "names": []
-}
