@@ -3,7 +3,7 @@
 import {
   useState
 } from "react";
-
+import { useExecutionStore } from "@/store/execution.store";
 import {
   useWorkflowStore
 } from "@/store/workflow.store";
@@ -11,7 +11,11 @@ import { UserButton } from "@clerk/nextjs";
 export function TopToolbar() {
   const [saving, setSaving] =
     useState(false);
-
+const setLastResponse =
+  useExecutionStore(
+    (state) =>
+      state.setLastResponse
+  );
   const {
     workflowId,
     nodes,
@@ -79,7 +83,20 @@ async function handleExecute() {
 
     const result =
       await response.json();
+const responseNode =
+  result.nodes?.find(
+    (node: any) =>
+      node.nodeType ===
+      "RESPONSE"
+  );
 
+if (
+  responseNode?.output?.response
+) {
+  setLastResponse(
+    responseNode.output.response
+  );
+}
     console.log(
       "Execution Result",
       result

@@ -12,6 +12,10 @@ interface ExecutionStore {
   status: WorkflowStatus;
 
   isExecuting: boolean;
+  lastResponse? : string,
+  setLastResponse: (
+  response: string
+) => void;
 
   startExecution: (
     runId?: string
@@ -68,6 +72,10 @@ export const useExecutionStore =
 
           isExecuting:
             false
-        })
+        }),
+        lastResponse: undefined,
+
+        setLastResponse : (response) => set({lastResponse: response})
+
     })
   );

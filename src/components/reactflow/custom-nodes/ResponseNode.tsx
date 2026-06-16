@@ -5,12 +5,20 @@ import {
   Position,
   NodeProps
 } from "@xyflow/react";
+import {
+  useExecutionStore
+} from "@/store/execution.store";
 
 import { BaseNode } from "./BaseNode";
 
 export function ResponseNode(
   props: NodeProps
 ) {
+    const lastResponse =
+  useExecutionStore(
+    (state) =>
+      state.lastResponse
+  );
   return (
     <BaseNode
       title="Response"
@@ -18,9 +26,20 @@ export function ResponseNode(
         props.data?.state as string
       }
     >
-      <div className="text-sm text-gray-700">
-        Final Output
-      </div>
+      <div
+  className="
+  max-h-40
+  overflow-auto
+  rounded
+  bg-slate-100
+  p-2
+  text-sm
+  text-slate-900
+  "
+>
+  {lastResponse ??
+    "Final Output"}
+</div>
 
       <Handle
         type="target"
