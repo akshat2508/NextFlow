@@ -7,7 +7,12 @@ import {
 import {
   geminiTask
 } from "@/lib/trigger/tasks/gemini.task";
+import {
+  generateGeminiResponse
+} from "@/lib/gemini";
 
+import { sleep }
+from "@/lib/utils/promises";
 import {
   NodeExecutionPayload,
   NodeExecutionOutput
@@ -30,70 +35,53 @@ export async function runNode(
     }
 
     case NodeType.CROP_IMAGE: {
-      const result = await cropImageTask.triggerAndWait({
-  image: String(inputs.image ?? ""),
-  xPercent: Number(inputs.xPercent ?? 0),
-  yPercent: Number(inputs.yPercent ?? 0),
-  widthPercent: Number(inputs.widthPercent ?? 100),
-  heightPercent: Number(inputs.heightPercent ?? 100)
-});
+  await sleep(30_000);
 
-      if (!result.ok) {
-  throw new Error(
-    `Crop image task failed: ${String(result.error)}`
-  );
-}
-
-return {
-  outputs: {
-    image: result.output.image
-  }
-};
+  return {
+    outputs: {
+      image: inputs.image
     }
+  };
+}
 
     case NodeType.GEMINI_PRO: {
-      const result =
-        await geminiTask.triggerAndWait({
-          prompt: inputs.prompt
-            ? String(inputs.prompt)
-            : undefined,
+  const response =
+    await generateGeminiResponse({
+      prompt: inputs.prompt
+        ? String(inputs.prompt)
+        : undefined,
 
-          systemPrompt:
-            inputs.systemPrompt
-              ? String(
-                  inputs.systemPrompt
-                )
-              : undefined,
+      systemPrompt:
+        inputs.systemPrompt
+          ? String(
+              inputs.systemPrompt
+            )
+          : undefined,
 
-          image: inputs.image
-            ? String(inputs.image)
-            : undefined,
+      image: inputs.image
+        ? String(inputs.image)
+        : undefined,
 
-          video: inputs.video
-            ? String(inputs.video)
-            : undefined,
+      video: inputs.video
+        ? String(inputs.video)
+        : undefined,
 
-          audio: inputs.audio
-            ? String(inputs.audio)
-            : undefined,
+      audio: inputs.audio
+        ? String(inputs.audio)
+        : undefined,
 
-          file: inputs.file
-            ? String(inputs.file)
-            : undefined
-        });
+      file: inputs.file
+        ? String(inputs.file)
+        : undefined
+    });
 
-      if (!result.ok) {
-  throw new Error(
-    `Gemini task failed: ${String(result.error)}`
-  );
-}
-
-return {
-  outputs: {
-    response: result.output.text
-  }
-};
+  return {
+    outputs: {
+      response:
+        response.text
     }
+  };
+}
 
     case NodeType.RESPONSE: {
       return {

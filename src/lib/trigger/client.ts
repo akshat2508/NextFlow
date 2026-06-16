@@ -1,25 +1,25 @@
-import { TriggerClient } from "@trigger.dev/sdk";
+// import { TriggerClient } from "@trigger.dev/sdk";
 
-let client: TriggerClient | null = null;
+// let client: TriggerClient | null = null;
 
-export function getTriggerClient(): TriggerClient {
-  if (client) {
-    return client;
-  }
+// export function getTriggerClient(): TriggerClient {
+//   if (client) {
+//     return client;
+//   }
 
-  const secretKey =
-    process.env.TRIGGER_SECRET_KEY;
+//   const secretKey =
+//     process.env.TRIGGER_SECRET_KEY;
 
-  if (!secretKey) {
-    throw new Error(
-      "TRIGGER_SECRET_KEY is missing"
-    );
-  }
+//   if (!secretKey) {
+//     throw new Error(
+//       "TRIGGER_SECRET_KEY is missing"
+//     );
+//   }
 
-  client = new TriggerClient({
-    id: "nextflow",
-    apiKey: secretKey
-  });
+//   client = new TriggerClient({
+//     id: "nextflow",
+//     apiKey: secretKey
+//   });
 
-  return client;
-}
+//   return client;
+// }

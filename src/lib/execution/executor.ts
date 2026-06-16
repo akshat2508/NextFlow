@@ -233,10 +233,20 @@ export async function executeWorkflow(
       "rejected"
   );
 
-if (hasFailures) {
-  throw new Error(
-    "Workflow execution failed"
+const failed =
+  batchResults.find(
+    (result) =>
+      result.status ===
+      "rejected"
   );
+
+if (failed) {
+  console.error(
+    "FAILED NODE:",
+    failed.reason
+  );
+
+  throw failed.reason;
 }
   }
 

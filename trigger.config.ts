@@ -1,7 +1,7 @@
 import { defineConfig } from "@trigger.dev/sdk/v3";
-
+console.log("maxduraiobt ", typeof 10 , 10);
 export default defineConfig({
-  project: process.env.TRIGGER_PROJECT_ID!,
+  project: "proj_zicbkjyucdbbnasqyclc",
   runtime: "node",
-  maxDuration: 0
+  maxDuration: 10
 });

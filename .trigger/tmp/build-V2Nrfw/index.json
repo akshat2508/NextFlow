@@ -1,0 +1,22 @@
+{
+  "configPath": "/Volumes/my_ssd/magica-clone/nextflow/.trigger/tmp/build-V2Nrfw/Volumes/my_ssd/magica-clone/nextflow/trigger.config.mjs",
+  "tasks": [
+    {
+      "id": "crop-image-task",
+      "maxDuration": 10,
+      "filePath": "src/lib/trigger/tasks/crop-image.task.ts",
+      "exportName": "cropImageTask",
+      "entryPoint": "/Volumes/my_ssd/magica-clone/nextflow/.trigger/tmp/build-V2Nrfw/Volumes/my_ssd/magica-clone/nextflow/src/lib/trigger/tasks/crop-image.task.mjs"
+    },
+    {
+      "id": "gemini-pro-task",
+      "maxDuration": 10,
+      "filePath": "src/lib/trigger/tasks/gemini.task.ts",
+      "exportName": "geminiTask",
+      "entryPoint": "/Volumes/my_ssd/magica-clone/nextflow/.trigger/tmp/build-V2Nrfw/Volumes/my_ssd/magica-clone/nextflow/src/lib/trigger/tasks/gemini.task.mjs"
+    }
+  ],
+  "workerEntryPoint": "/Volumes/my_ssd/magica-clone/nextflow/.trigger/tmp/build-V2Nrfw/Users/akshatpaul/.npm/_npx/9a64f2eb3993e9c7/node_modules/trigger.dev/dist/esm/entryPoints/dev-run-worker.mjs",
+  "runtime": "node",
+  "customConditions": []
+}

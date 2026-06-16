@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../../../../../../../src/lib/trigger/client.ts"],
+  "sourcesContent": ["// import { TriggerClient } from \"@trigger.dev/sdk\";\n\n// let client: TriggerClient | null = null;\n\n// export function getTriggerClient(): TriggerClient {\n//   if (client) {\n//     return client;\n//   }\n\n//   const secretKey =\n//     process.env.TRIGGER_SECRET_KEY;\n\n//   if (!secretKey) {\n//     throw new Error(\n//       \"TRIGGER_SECRET_KEY is missing\"\n//     );\n//   }\n\n//   client = new TriggerClient({\n//     id: \"nextflow\",\n//     apiKey: secretKey\n//   });\n\n//   return client;\n// }"],
+  "mappings": ";;;;;AAAA;",
+  "names": []
+}
