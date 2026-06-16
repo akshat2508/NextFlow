@@ -1,0 +1,5 @@
+export const PROTECTED_NODE_TYPES =
+[
+  "REQUEST_INPUTS",
+  "RESPONSE"
+];

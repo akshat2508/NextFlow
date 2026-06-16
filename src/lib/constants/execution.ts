@@ -1,0 +1,7 @@
+export const EXECUTION_CONSTANTS = {
+  MAX_PARALLEL_NODES: 100,
+
+  DEFAULT_TIMEOUT_MS: 5 * 60 * 1000,
+
+  CROP_DELAY_MS: 30_000
+} as const;

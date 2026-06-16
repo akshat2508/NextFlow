@@ -1,0 +1,73 @@
+import { create } from "zustand";
+
+export type WorkflowStatus =
+  | "idle"
+  | "running"
+  | "success"
+  | "failed";
+
+interface ExecutionStore {
+  runId?: string;
+
+  status: WorkflowStatus;
+
+  isExecuting: boolean;
+
+  startExecution: (
+    runId?: string
+  ) => void;
+
+  finishExecution: (
+    status:
+      | "success"
+      | "failed"
+  ) => void;
+
+  reset: () => void;
+}
+
+export const useExecutionStore =
+  create<ExecutionStore>(
+    (set) => ({
+      runId: undefined,
+
+      status: "idle",
+
+      isExecuting: false,
+
+      startExecution: (
+        runId
+      ) =>
+        set({
+          runId,
+
+          status:
+            "running",
+
+          isExecuting:
+            true
+        }),
+
+      finishExecution: (
+        status
+      ) =>
+        set({
+          status,
+
+          isExecuting:
+            false
+        }),
+
+      reset: () =>
+        set({
+          runId:
+            undefined,
+
+          status:
+            "idle",
+
+          isExecuting:
+            false
+        })
+    })
+  );

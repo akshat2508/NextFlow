@@ -1,26 +1,53 @@
 {
   "name": "nextflow",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
+  "description": "NextFlow Workflow Automation Platform",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "trigger:dev": "trigger.dev dev",
+    "trigger:deploy": "trigger.dev deploy"
   },
   "dependencies": {
-    "next": "16.2.9",
-    "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "@clerk/nextjs": "^7.5.3",
+    "@clerk/themes": "^2.4.57",
+    "@google/generative-ai": "^0.24.1",
+    "@hookform/resolvers": "^5.4.0",
+    "@neondatabase/serverless": "^1.1.0",
+    "@prisma/client": "^6.19.3",
+    "@trigger.dev/sdk": "^3.3.17",
+    "@uploadthing/react": "^7.3.3",
+    "@xyflow/react": "^12.11.0",
+    "clsx": "^2.1.1",
+    "dagre": "^0.8.5",
+    "date-fns": "^4.1.0",
+    "lodash": "^4.17.21",
+    "lucide-react": "^1.20.0",
+    "next": "^15.3.4",
+    "prisma": "^6.19.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-hook-form": "^7.79.0",
+    "tailwind-merge": "^3.6.0",
+    "uploadthing": "^7.7.4",
+    "uuid": "^11.1.0",
+    "zod": "^3.25.76",
+    "zustand": "^5.0.6"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.2.9",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "@tailwindcss/postcss": "^4.3.1",
+    "@types/lodash": "^4.17.20",
+    "@types/node": "^22.15.29",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@types/uuid": "^10.0.0",
+    "eslint": "^9.29.0",
+    "eslint-config-next": "^15.3.4",
+    "tailwindcss": "^4.1.10",
+    "typescript": "^5.8.3"
   }
 }
