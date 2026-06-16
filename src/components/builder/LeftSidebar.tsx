@@ -4,8 +4,56 @@ import { useWorkflowStore }
 from "@/store/workflow.store";
 
 export function LeftSidebar() {
-  const { workflowName } =
-    useWorkflowStore();
+  const {
+    workflowId,
+    workflowName,
+    nodes,
+    edges,
+  } = useWorkflowStore();
+
+  function handleExport() {
+    const workflow = {
+      workflowId,
+      workflowName,
+      nodes,
+      edges,
+    };
+
+    const blob =
+      new Blob(
+        [
+          JSON.stringify(
+            workflow,
+            null,
+            2
+          ),
+        ],
+        {
+          type:
+            "application/json",
+        }
+      );
+
+    const url =
+      URL.createObjectURL(
+        blob
+      );
+
+    const link =
+      document.createElement(
+        "a"
+      );
+
+    link.href = url;
+
+    link.download = `${workflowName}.json`;
+
+    link.click();
+
+    URL.revokeObjectURL(
+      url
+    );
+  }
 
   return (
     <aside
@@ -35,15 +83,39 @@ export function LeftSidebar() {
           "
         />
 
-        <button className="w-full rounded bg-blue-600 p-2">
+        <button
+          className="
+          w-full
+          rounded
+          bg-blue-600
+          p-2
+          "
+        >
           Run Workflow
         </button>
 
-        <button className="w-full rounded border p-2">
+        <button
+          onClick={
+            handleExport
+          }
+          className="
+          w-full
+          rounded
+          border
+          p-2
+          "
+        >
           Export JSON
         </button>
 
-        <button className="w-full rounded border p-2">
+        <button
+          className="
+          w-full
+          rounded
+          border
+          p-2
+          "
+        >
           Import JSON
         </button>
       </div>
