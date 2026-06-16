@@ -62,6 +62,7 @@ export async function PATCH(
     const workflow =
       await new WorkflowService().saveWorkflow(
         workflowId,
+        body.name,
         body.nodes,
         body.edges
       );

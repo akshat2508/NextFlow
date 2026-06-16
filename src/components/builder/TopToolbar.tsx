@@ -18,6 +18,8 @@ const setLastResponse =
   );
   const {
     workflowId,
+    workflowName,
+    setWorkflowName,
     nodes,
     edges
   } = useWorkflowStore();
@@ -40,6 +42,7 @@ const setLastResponse =
               "application/json",
           },
           body: JSON.stringify({
+            name:workflowName,
             nodes,
             edges,
           }),
@@ -144,9 +147,26 @@ if (
             : "Save"}
         </button>
 
-        <button className="rounded border px-3 py-1">
-          Rename
-        </button>
+       <input
+  value={workflowName}
+  onChange={(e) =>
+    setWorkflowName(
+      e.target.value
+    )
+  }
+  placeholder="Workflow Name"
+  className="
+    rounded
+    border
+    border-zinc-700
+    bg-zinc-900
+    px-3
+    py-1
+    text-sm
+    text-white
+    min-w-[220px]
+  "
+/>
 
         <button
   onClick={handleExecute}

@@ -51,12 +51,14 @@ export class WorkflowService {
 
   async saveWorkflow(
     workflowId: string,
+    workflowName: string,
     nodes: unknown,
     edges: unknown
   ) {
     return this.repo.update(
       workflowId,
       {
+        name:workflowName,
         nodes,
         edges
       }
