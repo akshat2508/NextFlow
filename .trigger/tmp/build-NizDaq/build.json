@@ -8,23 +8,23 @@
   "files": [
     {
       "entry": "src/lib/trigger/client.ts",
-      "out": "/Volumes/my_ssd/magica-clone/nextflow/.trigger/tmp/build-LbhDl1/Volumes/my_ssd/magica-clone/nextflow/src/lib/trigger/client.mjs"
+      "out": "/Volumes/my_ssd/magica-clone/nextflow/.trigger/tmp/build-NizDaq/Volumes/my_ssd/magica-clone/nextflow/src/lib/trigger/client.mjs"
     },
     {
       "entry": "src/lib/trigger/index.ts",
-      "out": "/Volumes/my_ssd/magica-clone/nextflow/.trigger/tmp/build-LbhDl1/Volumes/my_ssd/magica-clone/nextflow/src/lib/trigger/index.mjs"
+      "out": "/Volumes/my_ssd/magica-clone/nextflow/.trigger/tmp/build-NizDaq/Volumes/my_ssd/magica-clone/nextflow/src/lib/trigger/index.mjs"
     },
     {
       "entry": "src/lib/trigger/registry.ts",
-      "out": "/Volumes/my_ssd/magica-clone/nextflow/.trigger/tmp/build-LbhDl1/Volumes/my_ssd/magica-clone/nextflow/src/lib/trigger/registry.mjs"
+      "out": "/Volumes/my_ssd/magica-clone/nextflow/.trigger/tmp/build-NizDaq/Volumes/my_ssd/magica-clone/nextflow/src/lib/trigger/registry.mjs"
     },
     {
       "entry": "src/lib/trigger/tasks/crop-image.task.ts",
-      "out": "/Volumes/my_ssd/magica-clone/nextflow/.trigger/tmp/build-LbhDl1/Volumes/my_ssd/magica-clone/nextflow/src/lib/trigger/tasks/crop-image.task.mjs"
+      "out": "/Volumes/my_ssd/magica-clone/nextflow/.trigger/tmp/build-NizDaq/Volumes/my_ssd/magica-clone/nextflow/src/lib/trigger/tasks/crop-image.task.mjs"
     },
     {
       "entry": "src/lib/trigger/tasks/gemini.task.ts",
-      "out": "/Volumes/my_ssd/magica-clone/nextflow/.trigger/tmp/build-LbhDl1/Volumes/my_ssd/magica-clone/nextflow/src/lib/trigger/tasks/gemini.task.mjs"
+      "out": "/Volumes/my_ssd/magica-clone/nextflow/.trigger/tmp/build-NizDaq/Volumes/my_ssd/magica-clone/nextflow/src/lib/trigger/tasks/gemini.task.mjs"
     }
   ],
   "sources": {
@@ -57,8 +57,8 @@
       "contentHash": "ab5f1b2bf786b37652f56307302f93c3"
     },
     "package.json": {
-      "contents": "eJx1VMtu2zAQvPsrBJ+j1cvy69QCbY9Fb70ZYMi1zJgiBZJSnAb594IiJTFOchNnhqvZ2ZVeV0mylqTF9TFZS7zZs1DP6weHDqgNV9IRBeSQe7TTfCDWya3ucYQYGqp5Z4P4N97sL6Gek79KX1255HtvVUscn/wRxJ6Vbn0xf8+sj8nrKknGUsNkJHHPDx5+7LlgM+FPgTKWaDtT/hQoweXCjIdA2JcO6QXp1bHW0CRNpfrZ8kWgedOgPgY74QgMh9jVouqEevkoHNFVkryFlDqUDCXlGDX8jQrU18xZfHLw+rSDGqrpFYG2F2zR0yVsoN7NfKNUIzBrUKImlg+YEj7qcig3UMy6i1JXl3um0SjhRjuqatiEwTqRRCUZseSRGMwM6gG1QOOVBRSRstPctCSjgqPP+LSF4hD5jpLIDBuDPlVQQbFY7zuhCLMXLptMI6E2tF9FZW4vboEiuiihiIxQYW4hlmLplpFGY0hhD/UCW0zP0vezifsRihFzmfAdlHMp0VPOMI0MQJkvF93cPFxDBZsJ9vF8kktU5xAbGPGUqfZLzg0wHb8cn9LusCiMkhJ1yCGHOWJLuHjmkqUt6gbDDLbLvWgCU9Wlh77nzLt5N/p/ioVCZQ277Qz3xhLJwlLlsI0Xf/jx+e5P/qgxWaeMpWaaTRWtrvtaTfZhRPmdQCrmWyxLKGooD3f8XfT7z+j3E9jeSZZEcoh2AM30ozkdoDzcEylV8syb9ItViTKY97KYS4wvHn+SIdk9VGOyq7fVf/EMhjs=",
-      "contentHash": "a3d4e0157bb165f98583e201732fc855"
+      "contents": "eJx1VE2P2yAQvedXWDmvx19xstlTK7U9Vr31FomFiUODwQLsJF3tf68w2Gaz6c3z3mOYeTP4bZUka0laXL8ka4lXexTqsn5y6IDacCUdUUAOuUc7zQdindzqHkeIoaGadzaIf+LV/hDqkvxW+uzSJV97q1ri+OSXIPaodOuT+XNm/ZK8rZJkTDVMhSTu+8nDrz0XbCZ8FChjibYz5aNACS4XZgwCYW8d0hPSs2OtoUmaSvW95YtA86ZB/RLKCSEwHOKqFlUn1O2zcERXSfIeXOpQMpSUY9TwFypQnzNX4h8Hrw87qKGargi0PWGLni5hA/Vu5hulGoFZgxI1sXzAlPBRl0O5gWLWnZQ6O98zjUYJN9pRVcMmDNaJJCrJiCWvxGBmUA+oBRqvLKCIlJ3mpiUZFRy9x4ctFPuo7siJzLDR6EMFFRRL6X0nFGH2xGWTaSTUhvarKM315hYooosSiqgQKsw12FIs3TLSaAwuPEO9wBbTo/T9bOJ+hGLEnCZ8B+WcSvSUM0yjAqDMl4NubuMDqaGCzYR6dx7YEqXZx/ePeMpU+1/OzS8dH443abdfFEZJiTrYkMPssCVcXLhkaYu6wTCC7XIuGsCUdemh7znz1XyY/F/FQqKyht12hntjiWRhp3LYxns/fHu8+lN91JisU8ZSM42mijbXPVaTfZpQfieQivkWyxKKGsr9HX9n/fMj+uMEtneSxZEcohVAM/1nDnso9/dESpU88iZ9vCmRBfNWFnOG8d7xFxmMfYZqMRZlw2Vs6GRBWcJ1lK3eV/8AsFKO2g==",
+      "contentHash": "b62efb43cbccdd4b2a6b6785a8c74abd"
     }
   },
   "externals": [
@@ -74,10 +74,10 @@
       "src/trigger"
     ]
   },
-  "outputPath": "/Volumes/my_ssd/magica-clone/nextflow/.trigger/tmp/build-LbhDl1",
-  "runWorkerEntryPoint": "/Volumes/my_ssd/magica-clone/nextflow/.trigger/tmp/build-LbhDl1/Users/akshatpaul/.npm/_npx/a3728c67b1b6726f/node_modules/trigger.dev/dist/esm/entryPoints/dev-run-worker.mjs",
-  "indexWorkerEntryPoint": "/Volumes/my_ssd/magica-clone/nextflow/.trigger/tmp/build-LbhDl1/Users/akshatpaul/.npm/_npx/a3728c67b1b6726f/node_modules/trigger.dev/dist/esm/entryPoints/dev-index-worker.mjs",
-  "configPath": "/Volumes/my_ssd/magica-clone/nextflow/.trigger/tmp/build-LbhDl1/Volumes/my_ssd/magica-clone/nextflow/trigger.config.mjs",
+  "outputPath": "/Volumes/my_ssd/magica-clone/nextflow/.trigger/tmp/build-NizDaq",
+  "runWorkerEntryPoint": "/Volumes/my_ssd/magica-clone/nextflow/.trigger/tmp/build-NizDaq/Users/akshatpaul/.npm/_npx/a3728c67b1b6726f/node_modules/trigger.dev/dist/esm/entryPoints/dev-run-worker.mjs",
+  "indexWorkerEntryPoint": "/Volumes/my_ssd/magica-clone/nextflow/.trigger/tmp/build-NizDaq/Users/akshatpaul/.npm/_npx/a3728c67b1b6726f/node_modules/trigger.dev/dist/esm/entryPoints/dev-index-worker.mjs",
+  "configPath": "/Volumes/my_ssd/magica-clone/nextflow/.trigger/tmp/build-NizDaq/Volumes/my_ssd/magica-clone/nextflow/trigger.config.mjs",
   "customConditions": [],
   "deploy": {
     "env": {}
