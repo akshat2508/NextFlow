@@ -4,24 +4,78 @@ import { ReactNode } from "react";
 
 interface Props {
   title: string;
-
   status?: string;
-
   children: ReactNode;
 }
+
+function getStatusClasses(
+  status?: string
+) {
+  switch (status) {
+    case "running":
+      return "bg-blue-100 text-blue-700";
+
+    case "success":
+      return "bg-green-100 text-green-700";
+
+    case "failed":
+      return "bg-red-100 text-red-700";
+
+    default:
+      return "bg-slate-100 text-slate-600";
+  }
+}
+
 export function BaseNode({
   title,
   status,
-  children
+  children,
 }: Props) {
   return (
-    <div className="min-w-[280px] rounded-xl border border-slate-300 bg-white text-slate-900 shadow-md">
-      <div className="flex items-center justify-between border-b border-slate-200 px-4 py-2">
-        <h3 className="font-medium text-slate-900">
+    <div
+      className="
+        min-w-[340px]
+        overflow-hidden
+        rounded-2xl
+        border
+        border-slate-200
+        bg-white
+        shadow-lg
+      "
+    >
+      <div
+        className="
+          flex
+          items-center
+          justify-between
+          border-b
+          border-slate-200
+          px-4
+          py-3
+        "
+      >
+        <h3
+          className="
+          text-sm
+          font-semibold
+          text-slate-900
+          "
+        >
           {title}
         </h3>
 
-        <span className="text-xs text-slate-500">
+        <span
+          className={`
+            rounded-full
+            px-2.5
+            py-1
+            text-xs
+            font-medium
+            ${getStatusClasses(
+              status
+            )}
+          `}
+        >
           {status ?? "idle"}
         </span>
       </div>

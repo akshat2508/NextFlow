@@ -28,33 +28,64 @@ export function GeminiNode(
         props.data?.state as string
       }
     >
-      <textarea
-  value={
-  (props.data?.prompt as string) ??
-  ""
-}
-  onChange={(e) =>
-    updateNodeData(
-      props.id,
-      {
-        prompt:
-          e.target.value
+      <div className="space-y-3">
+
+  <div>
+    <label
+      className="
+      mb-1
+      block
+      text-xs
+      font-medium
+      text-slate-600
+      "
+    >
+      Prompt
+    </label>
+
+    <textarea
+      value={
+        (props.data?.prompt as string) ??
+        ""
       }
-    )
-  }
-  placeholder="Prompt"
-  className="
-    h-28
-    w-full
-    rounded
-    border
-    border-slate-300
-    bg-white
-    p-2
-    text-slate-900
-    placeholder:text-slate-400
-  "
-/>
+      onChange={(e) =>
+        updateNodeData(
+          props.id,
+          {
+            prompt:
+              e.target.value
+          }
+        )
+      }
+      placeholder="Enter your prompt..."
+      className="
+        h-28
+        w-full
+        rounded-xl
+        border
+        border-slate-300
+        bg-white
+        p-3
+        text-sm
+      "
+    />
+  </div>
+
+  <div
+    className="
+      rounded-xl
+      border
+      border-slate-200
+      bg-slate-50
+      p-4
+      text-center
+      text-xs
+      text-slate-500
+    "
+  >
+  </div>
+
+</div>
 
       <Handle
         type="target"

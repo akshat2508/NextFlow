@@ -24,3 +24,52 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+/* ---------- React Flow ---------- */
+
+.react-flow {
+  background: #f8fafc;
+}
+
+.react-flow__background {
+  opacity: 0.8;
+}
+
+.react-flow__controls {
+  border-radius: 12px !important;
+  overflow: hidden;
+  border: 1px solid #e2e8f0 !important;
+  background: white !important;
+}
+
+.react-flow__minimap {
+  border-radius: 12px !important;
+  overflow: hidden;
+  border: 1px solid #e2e8f0 !important;
+  background: white !important;
+}
+
+.react-flow__node.selected {
+  box-shadow:
+    0 0 0 2px #fbbf24,
+    0 0 20px rgba(251, 191, 36, 0.3);
+}
+
+/* ---------- Sliders ---------- */
+
+input[type="range"] {
+  width: 100%;
+  cursor: pointer;
+}
+
+/* ---------- Scrollbars ---------- */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
+}

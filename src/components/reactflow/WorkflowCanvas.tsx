@@ -151,11 +151,18 @@ const onConnect = (
     ) as Edge[]
   );
 };
-
+const defaultEdgeOptions = {
+  animated: true,
+  type: "smoothstep",
+  style: {
+    strokeWidth: 2,
+  },
+};
   return (
     <>
       <ReactFlow
         fitView
+        defaultEdgeOptions={defaultEdgeOptions}
         nodes={nodes}
         edges={edges}
         nodeTypes={nodeTypes}
@@ -215,11 +222,11 @@ onEdgesChange={(
 }}
         onConnect={onConnect}
       >
-        <Background />
+        <Background gap={20} size={1} color="#d4d4d8" />
 
-        <Controls />
+        <Controls showInteractive={false}/>
 
-        <MiniMap />
+        <MiniMap zoomable pannable />
       </ReactFlow>
 
       <FloatingAddButton
