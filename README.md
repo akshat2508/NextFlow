@@ -1,36 +1,122 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NextFlow
 
-## Getting Started
+NextFlow is a visual AI workflow builder inspired by tools such as Galaxy.ai, Langflow, Flowise, and n8n.
 
-First, run the development server:
+Users can visually construct workflows using drag-and-drop nodes, execute workflows as Directed Acyclic Graphs (DAGs), track execution history, and persist workflows for future use.
+
+---
+
+## Features
+
+### Workflow Builder
+
+* Visual node-based workflow editor
+* Drag-and-drop workflow construction
+* Import and export workflows as JSON
+* Auto-save support
+* Cycle prevention
+* Type-safe connections
+
+### Nodes
+
+#### Request Inputs
+
+* Text input
+* Image upload
+* Input preview
+
+#### Crop Image
+
+* Adjustable crop parameters
+* Image preview
+* Simulated processing delay
+
+#### Gemini Pro
+
+* Gemini-powered AI generation
+* Prompt chaining
+* Workflow-based input propagation
+
+#### Response
+
+* Final workflow output display
+
+---
+
+## Execution Engine
+
+* Directed Acyclic Graph (DAG) execution
+* Dependency resolution
+* Node execution persistence
+* Workflow run history
+* Parallel execution support
+
+---
+
+## Tech Stack
+
+* Next.js 15
+* React 19
+* TypeScript
+* Prisma
+* Neon PostgreSQL
+* Clerk Authentication
+* Zustand
+* React Flow
+* Trigger.dev
+* Google Gemini
+
+---
+
+## Screenshots
+
+### Dashboard
+
+(Add screenshot)
+
+### Workflow Builder
+
+(Add screenshot)
+
+### Execution History
+
+(Add screenshot)
+
+---
+
+## Local Setup
+
+```bash
+npm install
+```
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Create:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+.env
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+with:
 
-## Learn More
+DATABASE_URL=
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
+GEMINI_API_KEY=
+TRIGGER_SECRET_KEY=
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Deployed using Vercel.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Candidate
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Akshat Paul
+
+LinkedIn:
+https://www.linkedin.com/in/akshat-paul/
