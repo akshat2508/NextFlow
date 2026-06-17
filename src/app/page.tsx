@@ -115,6 +115,65 @@ useEffect(() => {
     }
   }
 
+  async function renameWorkflow(
+  workflowId: string,
+  currentName: string
+) {
+  const newName =
+    window.prompt(
+      "Workflow name",
+      currentName
+    );
+
+  if (
+    !newName ||
+    newName.trim() === ""
+  ) {
+    return;
+  }
+
+  try {
+    const response =
+      await fetch(
+        `/api/workflows/${workflowId}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type":
+              "application/json",
+          },
+          body: JSON.stringify({
+            name:
+              newName.trim(),
+          }),
+        }
+      );
+
+    if (!response.ok) {
+      throw new Error(
+        "Rename failed"
+      );
+    }
+
+    setWorkflows(
+      (current) =>
+        current.map(
+          (workflow) =>
+            workflow.id ===
+            workflowId
+              ? {
+                  ...workflow,
+                  name:
+                    newName.trim(),
+                }
+              : workflow
+        )
+    );
+  } catch (error) {
+    console.error(error);
+  }
+}
+
   useEffect(() => {
     if (isSignedIn) {
       loadWorkflows();
@@ -235,6 +294,24 @@ useEffect(() => {
                   >
                     Delete
                   </button>
+                  <button
+  onClick={() =>
+    renameWorkflow(
+      workflow.id,
+      workflow.name
+    )
+  }
+  className="
+    rounded
+    border
+    border-zinc-700
+    px-3
+    py-1
+    text-sm
+  "
+>
+  Rename
+</button>
                 </div>
               </div>
             )
