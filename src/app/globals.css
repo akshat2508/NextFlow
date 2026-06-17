@@ -73,3 +73,33 @@ input[type="range"] {
   background: #cbd5e1;
   border-radius: 999px;
 }
+
+.react-flow__handle {
+  width: 12px;
+  height: 12px;
+  border: 2px solid white;
+  background: #6366f1;
+}
+
+.react-flow__handle-connecting {
+  background: #10b981;
+}
+
+.react-flow__handle-valid {
+  background: #22c55e;
+}
+
+@keyframes pulse-node {
+  0% {
+    box-shadow: 0 0 0 0 rgba(59,130,246,.5);
+  }
+
+  100% {
+    box-shadow: 0 0 0 16px rgba(59,130,246,0);
+  }
+}
+
+.node-running {
+  animation:
+    pulse-node 1.5s infinite;
+}

@@ -63,7 +63,10 @@ const imageUrl =
 
   return (
     <BaseNode
-      title="Crop Image"
+  title="✂️ Crop Image"
+  headerClassName="
+    bg-sky-50
+  "      
       status={
         props.data?.state as string
       }

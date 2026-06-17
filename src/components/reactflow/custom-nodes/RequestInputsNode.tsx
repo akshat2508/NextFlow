@@ -30,6 +30,7 @@ export function RequestInputsNode(
   return (
     <BaseNode
       title="Request Inputs"
+      headerClassName="bg-emerald-50"
       status={
         props.data?.state as string
       }
@@ -145,6 +146,6 @@ export function RequestInputsNode(
           top: 80
         }}
       />
-    </BaseNode>
+    </BaseNode >
   );
 }

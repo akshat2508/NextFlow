@@ -21,7 +21,10 @@ export function ResponseNode(
   );
   return (
     <BaseNode
-      title="Response"
+  title="📤 Response"
+  headerClassName="
+    bg-orange-50
+  "
       status={
         props.data?.state as string
       }

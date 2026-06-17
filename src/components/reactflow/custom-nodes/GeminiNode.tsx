@@ -23,7 +23,10 @@ export function GeminiNode(
 
   return (
     <BaseNode
-      title="Gemini 3.1 Pro"
+  title="✨ Gemini 3.1 Pro"
+  headerClassName="
+    bg-violet-50
+  "
       status={
         props.data?.state as string
       }

@@ -6,6 +6,7 @@ interface Props {
   title: string;
   status?: string;
   children: ReactNode;
+  headerClassName?:string;
 }
 
 function getStatusClasses(
@@ -30,30 +31,37 @@ export function BaseNode({
   title,
   status,
   children,
+  headerClassName
 }: Props) {
   return (
     <div
-      className="
-        min-w-[340px]
-        overflow-hidden
-        rounded-2xl
-        border
-        border-slate-200
-        bg-white
-        shadow-lg
-      "
-    >
+  className={`
+    min-w-[340px]
+    overflow-hidden
+    rounded-2xl
+    border
+    border-slate-200
+    bg-white
+    shadow-lg
+
+    ${
+      status === "running"
+        ? "node-running"
+        : ""
+    }
+  `}
+>
       <div
-        className="
-          flex
-          items-center
-          justify-between
-          border-b
-          border-slate-200
-          px-4
-          py-3
-        "
-      >
+  className={`
+    flex
+    items-center
+    justify-between
+    border-b
+    px-4
+    py-3
+    ${headerClassName ?? ""}
+  `}
+>
         <h3
           className="
           text-sm
