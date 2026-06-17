@@ -33,7 +33,11 @@ export function resolveNodeInputs(
       sourceOutputs[
         edge.sourceHandle
       ];
-
+      console.log("EDGE MAP", {
+  sourceHandle: edge.sourceHandle,
+  targetHandle: edge.targetHandle,
+  sourceOutputs
+});
     resolved[
       edge.targetHandle
     ] = value;

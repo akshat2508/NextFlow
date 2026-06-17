@@ -30,9 +30,9 @@ export function GeminiNode(
     >
       <textarea
   value={
-    (props.data?.prompt as string) ??
-    ""
-  }
+  (props.data?.prompt as string) ??
+  ""
+}
   onChange={(e) =>
     updateNodeData(
       props.id,
@@ -61,13 +61,21 @@ export function GeminiNode(
         position={Position.Left}
         id="prompt"
       />
+      {/* <Handle
+  type="target"
+  position={Position.Left}
+  id="systemPrompt"
+  style={{
+    top: 50
+  }}
+/> */}
 
       <Handle
         type="target"
         position={Position.Left}
         id="image"
         style={{
-          top: 80
+          top: 80,
         }}
       />
 

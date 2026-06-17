@@ -151,8 +151,6 @@ const onConnect = (
     ) as Edge[]
   );
 };
-console.log("NODES:", nodes);
-console.log("EDGES:", edges);
 
   return (
     <>
@@ -161,12 +159,43 @@ console.log("EDGES:", edges);
         nodes={nodes}
         edges={edges}
         nodeTypes={nodeTypes}
-       onNodesChange={(
+        deleteKeyCode={["Backspace" , "Delete"]}
+     onNodesChange={(
   changes: NodeChange[]
 ) => {
+  const filteredChanges =
+    changes.filter(
+      (change) => {
+        if (
+          change.type !==
+          "remove"
+        ) {
+          return true;
+        }
+
+        const node =
+          nodes.find(
+            (n) =>
+              n.id ===
+              change.id
+          );
+
+        if (
+          node?.type ===
+            "REQUEST_INPUTS" ||
+          node?.type ===
+            "RESPONSE"
+        ) {
+          return false;
+        }
+
+        return true;
+      }
+    );
+
   const updatedNodes =
     applyNodeChanges(
-      changes,
+      filteredChanges,
       nodes
     );
 

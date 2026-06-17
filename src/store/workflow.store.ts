@@ -42,6 +42,7 @@ interface WorkflowStore {
       edges: Edge[];
     }
   ) => void;
+
   updateNodeData: (
   nodeId: string,
   data: Record<string, unknown>
@@ -112,19 +113,29 @@ export const useWorkflowStore =
   nodeId,
   data
 ) =>
-  set((state) => ({
-    nodes: state.nodes.map((node) =>
-      node.id === nodeId
-        ? {
-            ...node,
-            data: {
-              ...node.data,
-              ...data
+  set((state) => {
+    const updatedNodes =
+      state.nodes.map((node) =>
+        node.id === nodeId
+          ? {
+              ...node,
+              data: {
+                ...node.data,
+                ...data
+              }
             }
-          }
-        : node
-    )
-  })),
+          : node
+      );
+
+    console.log(
+      "UPDATED NODES",
+      updatedNodes
+    );
+
+    return {
+      nodes: updatedNodes
+    };
+  }),
 
       reset: () =>
         set({

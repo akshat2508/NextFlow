@@ -62,7 +62,6 @@ const setLastResponse =
   const [executing, setExecuting] =
   useState(false);
 
-
 async function handleExecute() {
   if (!workflowId) {
     return;
@@ -70,6 +69,23 @@ async function handleExecute() {
 
   try {
     setExecuting(true);
+
+    // Save latest canvas state first
+    await fetch(
+      `/api/workflows/${workflowId}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type":
+            "application/json",
+        },
+        body: JSON.stringify({
+          name: workflowName,
+          nodes,
+          edges,
+        }),
+      }
+    );
 
     const response =
       await fetch(
@@ -88,20 +104,22 @@ async function handleExecute() {
 
     const result =
       await response.json();
-const responseNode =
-  result.nodes?.find(
-    (node: any) =>
-      node.nodeType ===
-      "RESPONSE"
-  );
 
-if (
-  responseNode?.output?.response
-) {
-  setLastResponse(
-    responseNode.output.response
-  );
-}
+    const responseNode =
+      result.nodes?.find(
+        (node: any) =>
+          node.nodeType ===
+          "RESPONSE"
+      );
+
+    if (
+      responseNode?.output?.response
+    ) {
+      setLastResponse(
+        responseNode.output.response
+      );
+    }
+
     console.log(
       "Execution Result",
       result

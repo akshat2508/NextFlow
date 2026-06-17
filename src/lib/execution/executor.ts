@@ -136,15 +136,17 @@ export async function executeWorkflow(
             );
 
           if (
-            node.type ===
-            NodeType.REQUEST_INPUTS
-          ) {
-            resolvedInputs.text =
-              input.requestInputs?.text;
+  node.type ===
+  NodeType.REQUEST_INPUTS
+) {
+  resolvedInputs.text =
+    input.requestInputs?.text ??
+    resolvedInputs.text;
 
-            resolvedInputs.image =
-              input.requestInputs?.image;
-          }
+  resolvedInputs.image =
+    input.requestInputs?.image ??
+    resolvedInputs.image;
+}
 
           const result =
             await runNode({
