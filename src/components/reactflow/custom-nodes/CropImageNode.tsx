@@ -20,7 +20,35 @@ export function CropImageNode(
       (state) =>
         state.updateNodeData
     );
+    const nodes = useWorkflowStore(
+  (state) => state.nodes
+);
 
+const edges = useWorkflowStore(
+  (state) => state.edges
+);
+
+const incomingImageEdge =
+  edges.find(
+    (edge) =>
+      edge.target === props.id &&
+      edge.targetHandle ===
+        "image"
+  );
+
+const imageSourceNode =
+  nodes.find(
+    (node) =>
+      node.id ===
+      incomingImageEdge?.source
+  );
+
+const imageUrl =
+  imageSourceNode?.data
+    ?.imageUrl as
+    | string
+    | undefined;
+  
   function updateField(
     key: string,
     value: number
@@ -57,22 +85,36 @@ export function CropImageNode(
             Input Image
           </label>
 
-          <div
-            className="
-              flex
-              h-32
-              items-center
-              justify-center
-              rounded-xl
-              border
-              border-slate-200
-              bg-slate-50
-              text-xs
-              text-slate-500
-            "
-          >
-            No image connected
-          </div>
+          {imageUrl ? (
+  <img
+    src={imageUrl}
+    alt="input"
+    className="
+      h-32
+      w-full
+      rounded-xl
+      border
+      object-cover
+    "
+  />
+) : (
+  <div
+    className="
+      flex
+      h-32
+      items-center
+      justify-center
+      rounded-xl
+      border
+      border-slate-200
+      bg-slate-50
+      text-xs
+      text-slate-500
+    "
+  >
+    No image connected
+  </div>
+)}
         </div>
 
         {/* X */}
@@ -214,35 +256,81 @@ export function CropImageNode(
         {/* OUTPUT PREVIEW */}
 
         <div>
-          <label
-            className="
-              mb-1
-              block
-              text-xs
-              font-medium
-              text-slate-600
-            "
-          >
-            Output Preview
-          </label>
+  <label
+    className="
+      mb-1
+      block
+      text-xs
+      font-medium
+      text-slate-600
+    "
+  >
+    Output Preview
+  </label>
 
-          <div
-            className="
-              flex
-              h-32
-              items-center
-              justify-center
-              rounded-xl
-              border
-              border-slate-200
-              bg-slate-50
-              text-xs
-              text-slate-500
-            "
-          >
-            Cropped image preview
-          </div>
-        </div>
+  {imageUrl ? (
+    <div
+      className="
+        relative
+        h-32
+        overflow-hidden
+        rounded-xl
+        border
+      "
+    >
+      <img
+        src={imageUrl}
+        alt="cropped"
+        className="
+          h-full
+          w-full
+          object-cover
+        "
+      />
+
+      <div
+        className="
+          absolute
+          border-2
+          border-blue-500
+          bg-blue-500/10
+        "
+        style={{
+          left: `${
+            props.data?.xPercent ?? 0
+          }%`,
+          top: `${
+            props.data?.yPercent ?? 0
+          }%`,
+          width: `${
+            props.data?.widthPercent ??
+            100
+          }%`,
+          height: `${
+            props.data?.heightPercent ??
+            100
+          }%`,
+        }}
+      />
+    </div>
+  ) : (
+    <div
+      className="
+        flex
+        h-32
+        items-center
+        justify-center
+        rounded-xl
+        border
+        bg-slate-50
+        text-xs
+        text-slate-500
+      "
+    >
+      No image connected
+    </div>
+  )}
+</div>
 
       </div>
 
