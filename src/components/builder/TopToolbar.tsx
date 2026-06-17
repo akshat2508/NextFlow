@@ -13,11 +13,10 @@ import { ArrowLeft } from "lucide-react";
 export function TopToolbar() {
   const [saving, setSaving] =
     useState(false);
-const setLastResponse =
-  useExecutionStore(
-    (state) =>
-      state.setLastResponse
-  );
+const {
+  setLastResponse,
+  setRunId
+} = useExecutionStore();
   const {
     workflowId,
     workflowName,
@@ -104,6 +103,9 @@ async function handleExecute() {
 
     const result =
       await response.json();
+      if (result.runId) {
+  setRunId(result.runId);
+}
 
     const responseNode =
       result.nodes?.find(

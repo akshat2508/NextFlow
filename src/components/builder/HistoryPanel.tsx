@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 import { useWorkflowStore } from "@/store/workflow.store";
 
+import { useExecutionStore } from "@/store/execution.store";
 interface NodeRun {
   id: string;
   nodeType: string;
@@ -24,6 +25,11 @@ interface WorkflowRun {
 export function HistoryPanel() {
   const { workflowId } =
     useWorkflowStore();
+  
+    const runId =
+  useExecutionStore(
+    (state) => state.runId
+  );
 
   const [runs, setRuns] =
     useState<WorkflowRun[]>([]);
@@ -61,10 +67,12 @@ export function HistoryPanel() {
     }
   }
 
-  useEffect(() => {
-    loadHistory();
-  }, [workflowId]);
-
+ useEffect(() => {
+  loadHistory();
+}, [
+  workflowId,
+  runId
+]);
   return (
     <aside
       className="

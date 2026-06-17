@@ -8,6 +8,9 @@ export type WorkflowStatus =
 
 interface ExecutionStore {
   runId?: string;
+  setRunId: (
+    runId: string
+  ) => void;
 
   status: WorkflowStatus;
 
@@ -34,6 +37,9 @@ export const useExecutionStore =
   create<ExecutionStore>(
     (set) => ({
       runId: undefined,
+      setRunId: (
+        runId
+      ) => set({runId}),
 
       status: "idle",
 
