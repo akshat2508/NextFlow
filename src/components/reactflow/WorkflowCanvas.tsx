@@ -222,11 +222,11 @@ onEdgesChange={(
 }}
         onConnect={onConnect}
       >
-        <Background gap={20} size={1} color="#d4d4d8" />
+        <Background gap={24} size={1.2} color="#e5e7eb" />
 
-        <Controls showInteractive={false}/>
+        <Controls/>
 
-        <MiniMap zoomable pannable />
+        <MiniMap zoomable pannable  maskColor="rgba(0,0,0,0.05"/>
       </ReactFlow>
 
       <FloatingAddButton

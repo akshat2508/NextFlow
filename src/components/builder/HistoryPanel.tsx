@@ -3,8 +3,11 @@
 import { useEffect, useState } from "react";
 
 import { useWorkflowStore } from "@/store/workflow.store";
-
 import { useExecutionStore } from "@/store/execution.store";
+import {
+  ChevronRight,
+  ChevronDown
+} from "lucide-react";
 interface NodeRun {
   id: string;
   nodeType: string;
@@ -25,11 +28,11 @@ interface WorkflowRun {
 export function HistoryPanel() {
   const { workflowId } =
     useWorkflowStore();
-  
-    const runId =
-  useExecutionStore(
-    (state) => state.runId
-  );
+
+  const runId =
+    useExecutionStore(
+      (state) => state.runId
+    );
 
   const [runs, setRuns] =
     useState<WorkflowRun[]>([]);
@@ -67,37 +70,45 @@ export function HistoryPanel() {
     }
   }
 
- useEffect(() => {
-  loadHistory();
-}, [
-  workflowId,
-  runId
-]);
+  useEffect(() => {
+    loadHistory();
+  }, [workflowId, runId]);
+
   return (
     <aside
       className="
-      w-[300px]
+      w-[360px]
       border-l
-      border-zinc-800
-      bg-zinc-950
-      p-4
+      border-slate-200
+      bg-white
+      p-5
       overflow-y-auto
       "
     >
-      <div className="mb-4 flex items-center justify-between">
-        <h2 className="text-lg font-semibold">
-          Execution History
-        </h2>
+      <div className="mb-5 flex items-start justify-between">
+        <div>
+          <h2 className="text-xl font-bold text-slate-900">
+            Execution History
+          </h2>
+
+          <p className="text-sm text-slate-500">
+            {runs.length} workflow runs
+          </p>
+        </div>
 
         <button
           onClick={loadHistory}
           className="
-          rounded
+          rounded-xl
           border
-          border-zinc-700
-          px-2
-          py-1
+          border-black
+          bg-white
+          text-black
+          px-3
+          py-1.5
           text-xs
+          font-medium
+          hover:bg-slate-50
           "
         >
           Refresh
@@ -105,123 +116,204 @@ export function HistoryPanel() {
       </div>
 
       {loading && (
-        <div className="text-sm text-zinc-400">
+        <div className="text-sm text-slate-500">
           Loading...
         </div>
       )}
 
       {!loading &&
         runs.length === 0 && (
-          <div className="text-sm text-zinc-400">
-            No runs yet.
+          <div className="text-sm text-slate-500">
+            No executions yet.
           </div>
         )}
 
-      <div className="space-y-3">
+      <div className="space-y-4">
         {runs.map((run) => (
           <details
             key={run.id}
+            open
             className="
-            rounded-lg
+            rounded-2xl
             border
-            border-zinc-800
-            p-3
+            border-slate-200
+            bg-white
+            p-4
+            shadow-sm
             "
           >
-            <summary className="cursor-pointer">
-              <div className="flex items-center justify-between">
-               <span
-  className={`
-    rounded-full
-    px-2
-    py-1
-    text-xs
+<summary
+  className="
+  flex
+  items-center
+  justify-between
+  cursor-pointer
+  list-none
+  gap-3
+  "
+>             <div className="flex items-center gap-3">
+  <ChevronRight
+    className="
+    h-5
+    w-5
+    text-slate-500
+    transition-transform
+    group-open:rotate-90
+    "
+  />
 
-    ${
-      run.status ===
-      "success"
-        ? "bg-green-100 text-green-700"
-        : run.status ===
-          "failed"
-        ? "bg-red-100 text-red-700"
-        : "bg-blue-100 text-blue-700"
-    }
-  `}
->
-  {run.status}
+  <span
+    className={`
+      rounded-full
+      px-3
+      py-1
+      text-xs
+      font-semibold
+      uppercase
+      tracking-wide
+
+      ${
+        run.status === "success"
+          ? "bg-green-100 text-green-700"
+          : run.status === "failed"
+          ? "bg-red-100 text-red-700"
+          : "bg-blue-100 text-blue-700"
+      }
+    `}
+  >
+    {run.status}
+  </span>
+</div>
+
+<span className="text-sm text-slate-500">
+  {new Date(run.startedAt).toLocaleTimeString()}
 </span>
-
-                <span className="text-xs text-zinc-500">
-                  {new Date(
-                    run.startedAt
-                  ).toLocaleTimeString()}
-                </span>
-              </div>
             </summary>
 
-            <div className="mt-3 space-y-2">
+            <div className="mt-4 space-y-3">
               {run.nodeRuns.map(
                 (nodeRun) => (
                   <div
                     key={nodeRun.id}
                     className="
-                    rounded
-                    bg-zinc-900
-                    p-2
-                    text-xs
+                    rounded-xl
+                    border
+                    border-slate-200
+                    bg-slate-50
+                    p-3
                     "
                   >
-                    <div className="flex justify-between">
-                      <span>
-                        {
-                          nodeRun.nodeType
-                        }
+                    <div className="flex items-center justify-between gap-3">
+                      <span
+                        className="
+                        font-semibold
+                        text-slate-900
+                        tracking-wide
+                        "
+                      >
+                        {nodeRun.nodeType.replaceAll(
+                          "_",
+                          " "
+                        )}
                       </span>
 
-                      <span>
-                        {
-                          nodeRun.status
+                      <span
+                        className={`
+                        text-xs
+                        font-medium
+
+                        ${
+                          nodeRun.status ===
+                          "success"
+                            ? "text-green-600"
+                            : nodeRun.status ===
+                              "failed"
+                            ? "text-red-600"
+                            : "text-blue-600"
                         }
+                      `}
+                      >
+                        {nodeRun.status}
                       </span>
                     </div>
 
-                    <div className="mt-1 text-zinc-500">
-                      {
-                        nodeRun.durationMs
-                      }
+                    <div
+                      className="
+                      mb-4
+                      inline-flex
+                      rounded-full
+                      bg-slate-200
+                      px-2
+                      py-2
+                      text-[11px]
+                      font-medium
+                      text-slate-600
+                      "
+                    >
+                      {nodeRun.durationMs}
                       ms
                     </div>
 
                     {nodeRun.error && (
-                      <div className="mt-1 text-red-400">
-                        {
-                          nodeRun.error
-                        }
+                      <div
+                        className="
+                        mt-3
+                        rounded-lg
+                        bg-red-50
+                        p-2
+                        text-xs
+                        text-red-600
+                        "
+                      >
+                        {nodeRun.error}
                       </div>
                     )}
+
                     {nodeRun.output && (
-  <pre
-    className="
-      mt-2
-      max-h-40
-      overflow-auto
-      rounded
-      bg-black
-      p-2
-      text-[10px]
-      text-green-400
-      whitespace-pre-wrap
-      break-words
-    "
-  >
-    {JSON.stringify(
-      nodeRun.output,
-      null,
-      2
-    )}
-  </pre>
-)}
-                    
+<details
+  className="
+  group
+  rounded-2xl
+  border
+  border-slate-200
+  bg-white
+  p-4
+  shadow-sm
+  "
+>                        <summary
+                          className="
+                          cursor-pointer
+                          text-xs
+                          font-medium
+                          text-violet-600
+                          hover:text-violet-700
+                          "
+                        >
+                          View Output
+                        </summary>
+
+                        <pre
+                          className="
+                          mt-2
+                          max-h-48
+                          overflow-auto
+                          rounded-xl
+                          bg-slate-900
+                          p-3
+                          text-[10px]
+                          text-slate-100
+                          whitespace-pre-wrap
+                          break-words
+                          "
+                        >
+                          {JSON.stringify(
+                            nodeRun.output,
+                            null,
+                            2
+                          )}
+                        </pre>
+                      </details>
+                    )}
                   </div>
                 )
               )}

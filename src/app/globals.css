@@ -29,9 +29,15 @@ body {
 /* ---------- React Flow ---------- */
 
 .react-flow {
-  background: #f8fafc;
-}
+  background:
+    radial-gradient(
+      circle,
+      rgba(0,0,0,0.04) 1px,
+      transparent 1px
+    );
 
+  background-size: 24px 24px;
+}
 .react-flow__background {
   opacity: 0.8;
 }
