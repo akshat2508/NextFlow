@@ -10,6 +10,8 @@ import {
 import { UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+
+import {toast } from "sonner";
 export function TopToolbar() {
   const [saving, setSaving] =
     useState(false);
@@ -50,10 +52,14 @@ const {
         }
       );
 
-      console.log(
+      toast.success(
         "Workflow saved"
       );
-    } finally {
+    } 
+    catch(error){
+      toast.error("failed to save workflow");
+    }
+    finally {
       setSaving(false);
     }
   }
@@ -103,6 +109,7 @@ async function handleExecute() {
 
     const result =
       await response.json();
+      toast.success("Workflow executed successfully");
       if (result.runId) {
   setRunId(result.runId);
 }
@@ -128,6 +135,12 @@ async function handleExecute() {
     );
   } catch (error) {
     console.error(error);
+
+toast.error(
+  error instanceof Error
+    ? error.message
+    : "Execution failed"
+);
   } finally {
     setExecuting(false);
   }

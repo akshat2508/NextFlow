@@ -10,7 +10,7 @@ import {
   Edge
   
 } from "@xyflow/react";
-
+import { toast } from "sonner";
 import {
   applyNodeChanges,
   applyEdgeChanges,
@@ -91,7 +91,7 @@ const onConnect = (
       connection
     )
   ) {
-    console.warn(
+    toast.error(
       "Invalid connection type"
     );
 
@@ -105,8 +105,8 @@ const onConnect = (
       edges
     )
   ) {
-    console.warn(
-      "Cycle detected"
+    toast.error(
+      "Cycles are not allowed"
     );
 
     return;

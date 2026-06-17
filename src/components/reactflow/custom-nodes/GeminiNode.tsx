@@ -75,7 +75,7 @@ export function GeminiNode(
         position={Position.Left}
         id="image"
         style={{
-          top: 80,
+          top: 80
         }}
       />
 
