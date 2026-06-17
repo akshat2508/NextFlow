@@ -109,3 +109,26 @@ input[type="range"] {
   animation:
     pulse-node 1.5s infinite;
 }
+
+.react-flow__controls {
+  border-radius: 16px !important;
+  overflow: hidden;
+  border: 1px solid #ddd6c8 !important;
+  background: #f8f4ed !important;
+  box-shadow:
+    0 4px 20px rgba(0,0,0,0.06);
+}
+
+.react-flow__controls-button {
+  background: #f8f4ed !important;
+  color: #57534e !important;
+  border-bottom: 1px solid #e7e0d3 !important;
+}
+
+.react-flow__controls-button:hover {
+  background: #efe7d8 !important;
+}
+
+.react-flow__controls-button svg {
+  fill: #57534e !important;
+}

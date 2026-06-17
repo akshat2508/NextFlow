@@ -160,6 +160,8 @@ const defaultEdgeOptions = {
 };
   return (
     <>
+    <div className="h-full bg-[#f6f2ea]">
+
       <ReactFlow
         fitView
         defaultEdgeOptions={defaultEdgeOptions}
@@ -222,12 +224,13 @@ onEdgesChange={(
 }}
         onConnect={onConnect}
       >
-        <Background gap={24} size={1.2} color="#e5e7eb" />
+        <Background gap={24} size={1.5} color="#000000" />
 
         <Controls/>
 
         <MiniMap zoomable pannable  maskColor="rgba(0,0,0,0.05"/>
       </ReactFlow>
+      </div>
 
       <FloatingAddButton
         onClick={() =>
