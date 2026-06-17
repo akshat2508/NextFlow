@@ -38,6 +38,9 @@ export function ResponseNode(
   p-2
   text-sm
   text-slate-900
+  break-words
+  whitespace-pre-wrap
+  overflow-auto
   "
 >
   {lastResponse ??
