@@ -1,7 +1,7 @@
 "use client";
 
 import { WorkflowCanvas } from "@/components/reactflow/WorkflowCanvas";
-import { LeftSidebar } from "./LeftSidebar";
+
 import { HistoryPanel } from "./HistoryPanel";
 import { TopToolbar } from "./TopToolbar";
 import { BuilderInitializer }
@@ -15,7 +15,6 @@ export function BuilderLayout() {
       <TopToolbar />
 
       <div className="flex flex-1 overflow-hidden">
-        <LeftSidebar />
 
         <div className="relative flex-1">
           <WorkflowCanvas />

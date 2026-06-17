@@ -13,19 +13,21 @@ export function FloatingAddButton({
     <button
       onClick={onClick}
       className="
-        fixed
-        bottom-8
-        right-8
-        z-50
-        flex
-        h-14
-        w-14
-        items-center
-        justify-center
-        rounded-full
-        bg-black
-        text-white
-      "
+fixed
+bottom-6
+left-1/2
+
+flex
+h-14
+w-14
+-translate-x-1/2
+items-center
+justify-center
+rounded-full
+bg-white
+text-black
+shadow-xl
+"
     >
       <Plus />
     </button>
