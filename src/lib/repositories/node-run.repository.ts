@@ -38,4 +38,53 @@ export class NodeRunRepository {
       }
     });
   }
+
+  async createRunning(data: {
+  workflowRunId: string;
+  nodeId: string;
+  nodeType: string;
+}) {
+  return prisma.nodeRun.create({
+    data: {
+      workflowRunId:
+        data.workflowRunId,
+
+      nodeId: data.nodeId,
+
+      nodeType: data.nodeType,
+
+      status: "running",
+
+      durationMs: 0,
+    },
+  });
+}
+
+async complete(
+  nodeRunId: string,
+  data: {
+    status: string;
+    durationMs: number;
+    output?: unknown;
+    error?: string;
+  }
+) {
+  return prisma.nodeRun.update({
+    where: {
+      id: nodeRunId,
+    },
+
+    data: {
+      status: data.status,
+      durationMs: data.durationMs,
+
+      output:
+        data.output === undefined
+          ? undefined
+          : (data.output as object),
+
+      error: data.error,
+    },
+  });
+}
 }

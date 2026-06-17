@@ -34,6 +34,10 @@ import {
   generateRunId
 } from "@/lib/utils/ids";
 import { executeBatch } from "./batch-executor";
+import {
+  initializeProgress,
+  updateProgress
+} from "./progress-store";
 
 export interface ExecuteWorkflowInput {
   nodes: RuntimeWorkflowNode[];
@@ -54,6 +58,7 @@ export async function executeWorkflow(
 
   const runId = generateRunId();
 
+
   const context =
     new ExecutionContext();
 
@@ -71,7 +76,10 @@ export async function executeWorkflow(
     input.nodes.map(
       (node) => node.id
     );
-
+  initializeProgress(
+  runId,
+  nodeIds
+);
   validateDag(
     nodeIds,
     input.edges
@@ -126,6 +134,11 @@ export async function executeWorkflow(
             node.id,
             NodeState.RUNNING
           );
+          updateProgress(
+  runId,
+  node.id,
+  "running"
+);
 
           const resolvedInputs =
             resolveNodeInputs(
@@ -165,6 +178,12 @@ export async function executeWorkflow(
             node.id,
             NodeState.SUCCESS
           );
+          updateProgress(
+  runId,
+  node.id,
+  "success"
+);
+
 
           const nodeEnd =
             new Date();
@@ -203,6 +222,11 @@ export async function executeWorkflow(
             node.id,
             NodeState.FAILED
           );
+          updateProgress(
+  runId,
+  node.id,
+  "failed"
+);
 
           nodeRuns.push({
             nodeId: node.id,

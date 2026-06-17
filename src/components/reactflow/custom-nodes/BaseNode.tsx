@@ -45,10 +45,34 @@ export function BaseNode({
     shadow-lg
 
     ${
-      status === "running"
-        ? "node-running"
-        : ""
-    }
+  status === "running"
+    ? `
+      animate-pulse
+      ring-2
+      ring-violet-500
+      shadow-xl
+      shadow-violet-500/40
+    `
+    : ""
+}
+
+${
+  status === "success"
+    ? `
+      ring-2
+      ring-green-500
+    `
+    : ""
+}
+
+${
+  status === "failed"
+    ? `
+      ring-2
+      ring-red-500
+    `
+    : ""
+}
   `}
 >
       <div

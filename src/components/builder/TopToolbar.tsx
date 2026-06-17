@@ -47,7 +47,11 @@ export function TopToolbar() {
     edges,
     setNodes,
     setEdges,
+    setNodeState
   } = useWorkflowStore();
+//   const {
+//   updateNodeData
+// } = useWorkflowStore();
 
   async function handleSave() {
     if (!workflowId) {
@@ -92,6 +96,12 @@ export function TopToolbar() {
 
     try {
       setExecuting(true);
+      nodes.forEach((node) =>
+  setNodeState(
+    node.id,
+    "running"
+  )
+);
 
       await fetch(
         `/api/workflows/${workflowId}`,
@@ -133,6 +143,12 @@ export function TopToolbar() {
             "Execution failed"
         );
       }
+      nodes.forEach((node) =>
+  setNodeState(
+    node.id,
+    "success"
+  )
+);
 
       toast.success(
         "Workflow executed"
@@ -166,6 +182,12 @@ export function TopToolbar() {
           ? error.message
           : "Execution failed"
       );
+      nodes.forEach((node) =>
+  setNodeState(
+    node.id,
+    "failed"
+  )
+);
     } finally {
       setExecuting(false);
     }

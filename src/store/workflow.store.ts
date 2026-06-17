@@ -47,6 +47,10 @@ interface WorkflowStore {
   nodeId: string,
   data: Record<string, unknown>
 ) => void;
+setNodeState: (
+  nodeId: string,
+  state: string
+) => void;
 
   reset: () => void;
 }
@@ -127,15 +131,30 @@ export const useWorkflowStore =
           : node
       );
 
-    console.log(
-      "UPDATED NODES",
-      updatedNodes
-    );
+  
 
     return {
       nodes: updatedNodes
     };
   }),
+  setNodeState: (
+  nodeId,
+  state
+) =>
+  set((store) => ({
+    nodes: store.nodes.map(
+      (node) =>
+        node.id === nodeId
+          ? {
+              ...node,
+              data: {
+                ...node.data,
+                state
+              }
+            }
+          : node
+    )
+  })),
 
       reset: () =>
         set({
