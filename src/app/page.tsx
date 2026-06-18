@@ -3,6 +3,7 @@
 import { useAuth, SignInButton } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { CandidateAttribution } from "@/components/CandidateAttribution";
 
 interface Workflow {
   id: string;
@@ -204,6 +205,7 @@ export default function DashboardPage() {
   if (!isSignedIn) {
     return (
       <div className="flex h-screen items-center justify-center bg-[#F7F6F1] px-6">
+        <CandidateAttribution/>
         <div className="w-full max-w-sm rounded-2xl border border-[#E4E1D8] bg-white p-8 text-center shadow-sm">
           <div className="mb-5 flex justify-center">
             <FlowMark size={36} />
@@ -229,6 +231,7 @@ export default function DashboardPage() {
   // ---------- Main dashboard ----------
   return (
     <main className="min-h-screen bg-[#F7F6F1] px-6 py-10 text-[#161A18] sm:px-10">
+      <CandidateAttribution/>
       <div className="mx-auto max-w-6xl">
         {/* Header */}
         <div className="mb-8 flex flex-wrap items-end justify-between gap-4 border-b border-[#E4E1D8] pb-6">

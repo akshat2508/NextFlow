@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../../../../../../trigger.config.ts"],
-  "sourcesContent": ["import { defineConfig } from \"@trigger.dev/sdk/v3\";\nconsole.log(\"maxduraiobt \", typeof 10 , 10);\nexport default defineConfig({\n  project: \"proj_zicbkjyucdbbnasqyclc\",\n  runtime: \"node\",\n  maxDuration: 10,\n  build: {}\n});\nexport const resolveEnvVars = undefined;"],
-  "mappings": ";;;;;;;;AAAA;AACA,QAAQ,IAAI,gBAAgB,UAAY,EAAE;AAC1C,IAAO,yBAAQ,aAAa;AAAA,EAC1B,SAAS;AAAA,EACT,SAAS;AAAA,EACT,aAAa;AAAA,EACb,OAAO,CAAC;AACV,CAAC;AACM,IAAM,iBAAiB;",
-  "names": []
-}

@@ -42,6 +42,7 @@ import {
 } from "./FloatingAddButton";
 
 import { NodePicker } from "./NodePicker";
+import { CandidateAttribution } from "../CandidateAttribution";
 
 export function WorkflowCanvas() {
   const [open, setOpen] =
@@ -161,6 +162,7 @@ const defaultEdgeOptions = {
   return (
     <>
     <div className="h-full bg-[#f6f2ea]">
+      <CandidateAttribution/>
 
       <ReactFlow
         fitView

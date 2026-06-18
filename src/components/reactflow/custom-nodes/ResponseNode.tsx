@@ -31,16 +31,7 @@ export function ResponseNode(
     >
       <div
   className="
-  max-h-40
-  overflow-auto
-  rounded
-  bg-slate-100
-  p-2
-  text-sm
-  text-slate-900
-  break-words
-  whitespace-pre-wrap
-  overflow-auto
+  max-h-40  rounded bg-slate-100 p-2 text-sm text-slate-900 break-words overflow-auto 
   "
 >
   {lastResponse ??
